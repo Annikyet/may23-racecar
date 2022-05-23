@@ -6,7 +6,7 @@ class AppState extends EventEmitter {
   /** @type {import('./Models/Racer').Racer[]} */
   racers = [
     new Racer('Salem', '🐈‍⬛', 13),
-    new Racer('Annika', '🧙🏻‍♀️', 13),
+    new Racer('Annika', '🧙🏻‍♀️', 666),
     new Racer('Batsy', '🦇', 13),
     new Racer('Jack', '🎃', 13)
   ]
