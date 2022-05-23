@@ -11,10 +11,10 @@ export class Racer {
     if (this.distance > 95) {
       this.distance = 95
     }
-    console.log(this.name + ': ' + this.distance)
+    // console.log(this.name + ': ' + this.distance)
   }
 
   get html() {
-    return `<div class="bg-dark my-2" id="${this.name}">${this.emoji}</div>`
+    return `<div class="bg-dark my-2" style="padding-left: 0%" id="${this.name}">${this.emoji}</div>`
   }
 }

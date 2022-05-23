@@ -12,7 +12,7 @@ function _drawRace() {
 }
 
 function _drawRacerMovement(name, distance) {
-  document.getElementById(name).style.paddingLeft = `${distance}%`
+  document.getElementById(name).style.paddingLeft = distance + "%"
 }
 
 function _moveRacers() {
@@ -27,7 +27,6 @@ function _moveRacers() {
       break
     }
   }
-  _drawRacerMovement()
 }
 
 export class RacersController {
@@ -37,12 +36,14 @@ export class RacersController {
 
   start() {
     _intervalId = setInterval(_moveRacers, 100)
+    console.log("Race started!")
   }
 
   reset() {
     if (_intervalId) {
       clearInterval(_intervalId)
     }
+    console.log("Race reset")
     document.getElementById('winner').innerText = ""
     for (const r in ProxyState.racers) {
       ProxyState.racers[r].distance = 0
