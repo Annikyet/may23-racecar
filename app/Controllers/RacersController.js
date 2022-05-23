@@ -12,7 +12,22 @@ function _drawRace() {
 }
 
 function _drawRacerMovement(name, distance) {
-  document.getElementById(name).style.paddingLeft = distance + "%"
+  document.getElementById(name + "-track").style.paddingLeft = distance + "%"
+}
+
+function _drawRacersScore() {
+  for (const r in ProxyState.racers) {
+    document.getElementById(ProxyState.racers[r].name + "-score").innerText = `${ProxyState.racers[r].name}: ${ProxyState.racers[r].wins}`
+  }
+}
+
+function _raceWon(racerIdx) {
+  clearInterval(_intervalId)
+  _intervalId = undefined
+  console.log(ProxyState.racers[racerIdx].name + " wins!")
+  ProxyState.racers[racerIdx].wins++
+  document.getElementById('winner').innerText = ProxyState.racers[racerIdx].name + " wins!"
+  _drawRacersScore()
 }
 
 function _moveRacers() {
@@ -20,10 +35,7 @@ function _moveRacers() {
     ProxyState.racers[r].move()
     _drawRacerMovement(ProxyState.racers[r].name, ProxyState.racers[r].distance)
     if (ProxyState.racers[r].distance >= 95) {
-      clearInterval(_intervalId)
-      _intervalId = undefined
-      console.log(ProxyState.racers[r].name + " wins!")
-      document.getElementById('winner').innerText = ProxyState.racers[r].name + " wins!"
+      _raceWon(r)
       break
     }
   }

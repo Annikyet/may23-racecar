@@ -4,6 +4,7 @@ export class Racer {
     this.emoji = emoji
     this.number = number
     this.distance = 0
+    this.wins = 0
   }
 
   move() {
@@ -15,6 +16,7 @@ export class Racer {
   }
 
   get html() {
-    return `<div class="bg-dark my-2" style="padding-left: 0%" id="${this.name}">${this.emoji}</div>`
+    return `<div class="bg-dark my-2" style="padding-left: 0%" id="${this.name}-track">${this.emoji}</div>
+    <div id="${this.name}-score">${this.name}: 0</div>`
   }
 }
